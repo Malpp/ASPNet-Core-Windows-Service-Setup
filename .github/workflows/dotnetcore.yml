@@ -1,0 +1,27 @@
+name: .NET Core
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1
+    - name: Build with dotnet
+      run: dotnet publish -c Release
+    - name: Inno setup
+      run: ISCC.exe ./Setup/winserve.iss
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        # Artifact name
+        name: Setup
+        # Directory containing files to upload
+        path: ./Setup/Output/setup.exe
