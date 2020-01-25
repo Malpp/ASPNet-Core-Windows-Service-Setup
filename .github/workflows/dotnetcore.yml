@@ -25,4 +25,4 @@ jobs:
         # Artifact name
         name: Setup
         # Directory containing files to upload
-        path: Setup/Output/setup.exe
+        path: ./Setup/Output/mysetup.exe
