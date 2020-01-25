@@ -26,3 +26,5 @@ jobs:
         name: Setup
         # Directory containing files to upload
         path: ./Setup/Output/mysetup.exe
+    - name: Release
+      uses: fnkr/github-action-ghr@v1.2
