@@ -19,12 +19,9 @@ jobs:
     - name: Inno setup
       run: ISCC.exe ./Setup/winserve.iss
 
-    - name: Upload artifact
-      uses: actions/upload-artifact@v1.0.0
-      with:
-        # Artifact name
-        name: Setup
-        # Directory containing files to upload
-        path: ./Setup/Output/mysetup.exe
     - name: Release
-      uses: fnkr/github-action-ghr@v1.2
+      uses: softprops/action-gh-release@v1
+      with:
+        files: ./Setup/Output/mysetup.exe
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
